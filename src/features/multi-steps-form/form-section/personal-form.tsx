@@ -1,0 +1,32 @@
+import { CustomFormFields } from "@/components/custom-form-fields";
+import React from "react";
+import { personalFields } from "../constants";
+import { FormErrors } from "@/app/multisteps-form/page";
+
+interface PersonalFormProps {
+  data: Record<string, string | number | boolean | File | string[] | null>;
+  handleChange: (
+    name: string,
+    value: string | number | boolean | File | null
+  ) => void;
+  errors: FormErrors;
+}
+
+const PersonalForm: React.FC<PersonalFormProps> = ({
+  data,
+  handleChange,
+  errors,
+}) => {
+  return (
+    <div>
+      <CustomFormFields
+        fields={personalFields() || []}
+        formData={data}
+        handleChange={handleChange}
+        errors={errors}
+      />
+    </div>
+  );
+};
+
+export default PersonalForm;
