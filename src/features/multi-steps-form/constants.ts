@@ -1,7 +1,9 @@
+import { FormData } from "./types/multi-step-form";
+
 export type FieldProps = {
   type: "textbox" | "selectbox" | "checkbox" | "radio" | "file";
   fieldType?: string;
-  name: string;
+  name: keyof FormData;
   label: string;
   option?: {
     label: string;

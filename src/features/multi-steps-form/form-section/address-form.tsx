@@ -1,12 +1,12 @@
 import { CustomFormFields } from "@/components/custom-form-fields";
 import React from "react";
 import { addressFields } from "../constants";
-import { FormErrors } from "@/app/multisteps-form/page";
+import { FormData, FormErrors } from "../types/multi-step-form";
 
 interface AddressFormProps {
   data: Record<string, string | number | boolean | string[] | File | null>;
   handleChange: (
-    name: string,
+    name: keyof FormData,
     value: string | number | boolean | File | null
   ) => void;
   errors: FormErrors;

@@ -6,11 +6,29 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   const router = useRouter();
 
+  const routes = [
+    {
+      name: "Countdown Timer",
+      route: "/countdown-timer",
+    },
+    {
+      name: "Multistep Form",
+      route: "/multisteps-form",
+    },
+  ];
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <button onClick={() => router.push("/multisteps-form")}>
-        Multisteps Form
-      </button>
+    <div className="flex items-center justify-center gap-4 min-h-screen">
+      {routes.map((route, index) => (
+        <div key={index}>
+          <button
+            className="primary-btn"
+            onClick={() => router.push(`${route.route}`)}
+          >
+            {route.name}
+          </button>
+        </div>
+      ))}
     </div>
   );
 }

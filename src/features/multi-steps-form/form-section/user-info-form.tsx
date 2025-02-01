@@ -1,12 +1,12 @@
 import React from "react";
 import { CustomFormFields } from "@/components/custom-form-fields";
 import { userInfoFields } from "../constants";
-import { FormErrors } from "@/app/multisteps-form/page";
+import { FormData, FormErrors } from "../types/multi-step-form";
 
 interface UserInfoFormProps {
   data: Record<string, string | number | string[] | boolean | File | null>;
   handleChange: (
-    name: string,
+    name: keyof FormData,
     value: string | number | boolean | File | null
   ) => void;
   errors: FormErrors;

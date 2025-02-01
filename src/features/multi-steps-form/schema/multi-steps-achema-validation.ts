@@ -1,4 +1,4 @@
-import { FormData, FormErrors } from "@/app/multisteps-form/page";
+import { FormData, FormErrors } from "../types/multi-step-form";
 
 export const userFieldsValidation = (data: FormData) => {
   const errors: FormErrors = {};
@@ -25,7 +25,8 @@ export const addressFieldValidation = (data: FormData) => {
 
 export const personalFieldValidation = (data: FormData) => {
   const errors: FormErrors = {};
-
+  if (!data.profile_image) errors.profile_image = "Profile Image is required";
+  if (!data.country) errors.country = "Country is required";
   if (!data.gender) errors.gender = "Gender is required";
   if (data.hobbies.length === 0)
     errors.hobbies = "At least one hobby is required";

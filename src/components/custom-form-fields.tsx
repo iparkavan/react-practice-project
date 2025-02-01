@@ -1,12 +1,15 @@
-import { FormErrors } from "@/app/multisteps-form/page";
 import { FieldProps } from "@/features/multi-steps-form/constants";
+import {
+  FormData,
+  FormErrors,
+} from "@/features/multi-steps-form/types/multi-step-form";
 import React, { ChangeEvent } from "react";
 
 interface CustomFormFieldsProps {
   fields: FieldProps[];
   formData: Record<string, string | number | boolean | File | string[] | null>;
   handleChange: (
-    name: string,
+    name: keyof FormData,
     value: string | number | boolean | File | null
   ) => void;
   handleDeleteFile?: (name: string) => void;
@@ -78,12 +81,8 @@ export const CustomFormFields: React.FC<CustomFormFieldsProps> = ({
                 {field.type === "radio" && (
                   <div className="space-x-3">
                     {field.option?.map((item, index) => (
-                      <>
-                        <label
-                          htmlFor={item.value}
-                          key={item.value}
-                          className="cursor-pointer"
-                        >
+                      <React.Fragment key={item.value}>
+                        <label htmlFor={item.value} className="cursor-pointer">
                           <input
                             type="radio"
                             id={item.value}
@@ -98,7 +97,7 @@ export const CustomFormFields: React.FC<CustomFormFieldsProps> = ({
                           />
                           {item.label}
                         </label>
-                      </>
+                      </React.Fragment>
                     ))}
                     {errors[field.name] && (
                       <p className="text-red-500">{errors[field.name]}</p>
@@ -109,7 +108,7 @@ export const CustomFormFields: React.FC<CustomFormFieldsProps> = ({
                 {field.type === "checkbox" && (
                   <div className="space-x-3">
                     {field.option?.map((item, index) => (
-                      <>
+                      <React.Fragment key={item.value}>
                         <label
                           htmlFor={item.value}
                           key={item.value}
@@ -140,7 +139,7 @@ export const CustomFormFields: React.FC<CustomFormFieldsProps> = ({
                           />
                           {item.label}
                         </label>
-                      </>
+                      </React.Fragment>
                     ))}
                     {errors[field.name] && (
                       <p className="text-red-500">{errors[field.name]}</p>

@@ -9,24 +9,11 @@ import {
   personalFieldValidation,
   userFieldsValidation,
 } from "@/features/multi-steps-form/schema/multi-steps-achema-validation";
+import {
+  FormData,
+  FormErrors,
+} from "@/features/multi-steps-form/types/multi-step-form";
 import { useState } from "react";
-
-export type FormData = {
-  first_name: string;
-  last_name: string;
-  email: string;
-  password: string;
-  address_1: string;
-  address_2: string;
-  location: string;
-  pin_code: string;
-  profile_image: File | null;
-  country: string;
-  gender: string;
-  hobbies: string[];
-};
-
-export type FormErrors = Partial<Record<keyof FormData, string>>;
 
 const initialFormData: FormData = {
   first_name: "",
@@ -48,13 +35,19 @@ const page = () => {
   const [errors, setErrors] = useState<FormErrors>({});
 
   const handleChange = (
-    name: string,
+    name: keyof FormData,
     value: string | number | boolean | File | null
   ) => {
     setData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+
+    setErrors((prevErrors) => {
+      const newErrors = { ...prevErrors };
+      delete newErrors[name];
+      return newErrors;
+    });
   };
 
   const {
@@ -86,12 +79,26 @@ const page = () => {
   };
 
   const nextStep = () => {
-    if (validateCurrentStep()) next();
+    if (!validateCurrentStep()) return;
+    if (!isLastStep) {
+      next();
+    }
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("data", data);
+
+    const allErrors = validationFunction.reduce((acc, validate) => {
+      const stepErrors = validate(data);
+      return { ...acc, ...stepErrors };
+    }, {} as FormErrors);
+
+    if (Object.keys(allErrors).length === 0) {
+      console.log("data", data);
+    } else {
+      console.log("All fields are mandatory");
+      new Error("All fields are mandatory");
+    }
   };
 
   return (
