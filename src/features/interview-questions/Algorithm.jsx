@@ -1,3 +1,110 @@
+// // ____________CHECK THE STRING CONTAINS BALANCE PARENTHESE____
+// const string = '(())((()))(())(())'
+
+// const balancedParenthese = (str) => {
+
+//     const stack = []
+
+//     for (let char of str) {
+//         if (char === '(') {
+//             stack.push(char)
+//         } else if (char === ')') {
+//             if (stack.length === 0)  {
+//                 return false
+//             }
+
+//             stack.pop()
+//         }
+//     }
+
+//     return stack.length === 0
+// }
+
+// console.log(balancedParenthese(string))
+
+// ________________REMOVE_DUPLICATES____________________
+
+// const array = [1, 2, 3, 4, 3, 2, 1, 5, 4]
+
+// const eliminateDuplicate = (arr) => {
+//     // return [...new Set(arr)] // FIRST METHOD
+
+//     // return arr.filter((item, index, arr) => arr.indexOf(item) === index) //SECOND METHOD
+
+// //   return arr.reduce((acc, item) => {
+// //       if (!acc.includes(item)) {
+// //           acc.push(item)
+// //       }
+// //       return acc
+// //   }, [])  // THIRD METHOD
+
+// //   return arr.reduce((acc, item) => acc.includes(item) ? acc : [...acc, item], []) // THIRD METHOD
+
+// }
+
+// console.log(eliminateDuplicate(array))
+
+// _______________FIND_THE_LONGEST_WORD__________________
+// const string = 'Find the longest word in this string'
+
+// const longestWord = (sentence) => {
+//     const words = sentence.split(' ')
+
+//     let longest = ''
+
+//     for (const word of words) {
+//         if (word.length > longest.length) {
+//             longest = word
+//         }
+//     }
+//     // console.log(words)
+//     return longest
+// }
+
+// console.log(longestWord(string))
+
+// _______________PALAINDROME_WITH_STRING_______________
+
+// const string = 'Malayalam'
+
+// const isPalindrome = (str) => {
+
+//     // const reversed = str.split('').reverse().join('').toLowerCase()
+//     // return str.toLowerCase() === reversed
+
+//     const reversedString = (rev) => {
+//         let reversed = ''
+
+//         for (let i = rev.length - 1; i >= 0; i--) {
+//             reversed += rev[i]
+//         }
+
+//         return reversed
+//     }
+
+//     const lowerCase = str.toLowerCase()
+
+//     return lowerCase === reversedString(lowerCase)
+
+// }
+
+// console.log(isPalindrome(string))
+
+// ______________REVERSE_STRING________________________
+// const string = 'Captain Miller'
+
+// const reverseString = (str) => {
+//     let reversed = ''
+
+//     for (let i = str.length - 1; i >= 0; i--) {
+//         reversed += str[i]
+//     }
+
+//     return reversed
+// }
+
+// console.log(reverseString(string))
+
 // _____________CHECKNOOFSTRING________________________
 
 // const string = 'parkavan'
