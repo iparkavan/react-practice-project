@@ -1,3 +1,58 @@
+// _____________CHECKNOOFSTRING________________________
+
+// const string = 'parkavan'
+
+// const checkNoOfString = (str) => {
+
+//     const obj = {}
+//     // const hashMap = new Map()
+
+//     for (let i = 0; i < str.length; i++) {
+//         if (obj.hasOwnProperty(str[i])) {
+//             obj[str[i]]++
+//         } else {
+//             obj[str[i]] = 1
+//         }
+
+//         // if (hashMap.has(str[i])) {
+//         //     hashMap.set(str[i], hashMap.get(str[i]) + 1)
+//         // } else {
+//         //     hashMap.set(str[i], 1)
+//         // }
+//     }
+
+//     return obj
+//     // return hashMap
+// }
+
+// console.log(checkNoOfString(string))
+
+// _________________Palindrome__________________
+
+// const pali = 12321
+
+// const isPalindrome = (pali) => {
+
+//     if (pali < 0) {
+//         return false
+//     }
+
+//     let num = pali
+//     let rem = 0
+
+//     while (num > 0) {
+//         rem = (rem * 10) + num % 10
+//         num = Math.floor(num / 10)
+//     }
+
+//     return rem === pali
+
+// }
+
+// console.log(isPalindrome(pali))
+
+//______________________SORT METHOD_______________________
+
 // const array = [9, 8, 7, 4, 2, 1, 0, -1,-2]
 
 // const mergeSort = (arr) => {
