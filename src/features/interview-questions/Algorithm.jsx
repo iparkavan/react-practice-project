@@ -1,3 +1,92 @@
+// //___________FIND THE BOTH STRINGS ARE ANAGRAMS___________
+
+// const string_1 = "listen";
+// const string_2 = "silent";
+
+// const areAnagrams = (str_1, str_2) => {
+//   str_1 = str_1.replace(/\s+/g, "").toLowerCase();
+//   str_2 = str_2.replace(/\s+/g, "").toLowerCase();
+
+//   // check the wheather the string length are equal
+//   if (str_1.length !== str_2.length) {
+//     return false;
+//   }
+
+//   // // create a frequency pattern to store the alphabats counts
+//   const frequency_1 = {};
+//   const frequency_2 = {};
+
+//   for (const char of str_1) {
+//     frequency_1[char] = (frequency_1[char] || 0) + 1;
+//   }
+
+//   for (const char of str_2) {
+//     frequency_2[char] = (frequency_2[char] || 0) + 1;
+//   }
+
+//   // check whether both frequency counts are equal
+//   for (const char in frequency_1) {
+//     if (frequency_1[char] !== frequency_2[char]) {
+//       return false;
+//     }
+//   }
+
+  // // METHOD 2 USINg new Map()
+  // const frequency_1 = new Map()
+  // const frequency_2 = new Map()
+
+  // for (const char of str_1) {
+  //     frequency_1.set(char, (frequency_1.get(char) || 0) + 1)
+  // }
+
+  // for (const char of str_2) {
+  //     frequency_2.set(char, (frequency_2.get(char) || 0) + 1)
+  // }
+
+  // for (const char of frequency_1.keys()) {
+  //     if (frequency_1.get(char) !== frequency_2.get(char)) return false
+  // }
+
+  return true;
+};
+
+console.log(areAnagrams(string_1, string_2));
+
+// _____________FIND THE FIRST NON_REPEATING CHARACTER_____
+// const string = 'swiss'
+
+// const nonRepeatingCharacter = (str) => {
+//     const frequencyMap = new Map()
+
+//     for (const char of str) {
+//         frequencyMap.set(char, (frequencyMap.get(char) || 0) + 1);
+//     }
+
+//     for (const char of str) {
+//       if (frequencyMap.get(char) === 1) return char
+//     }
+
+//     return null
+
+//     // for (let i = 0; i < str.length; i++) {
+//     //     if (frequencyMap[str[i]]) {
+//     //         frequencyMap[str[i]]++
+//     //     } else {
+//     //         frequencyMap[str[i]] = 1
+//     //     }
+//     // }
+
+//     // for (let i = 0; i < str.length; i++) {
+//     //     if (frequencyMap[str[i]] === 1) {
+//     //         return str[i]
+//     //     }
+//     // }
+
+//     // return null
+// }
+
+// console.log(nonRepeatingCharacter(string))
+
 // // ____________CHECK THE STRING CONTAINS BALANCE PARENTHESE____
 // const string = '(())((()))(())(())'
 

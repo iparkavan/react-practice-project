@@ -15,6 +15,10 @@ export default function Home() {
       name: "Multistep Form",
       route: "/multisteps-form",
     },
+    {
+      name: "Add Input Fields",
+      route: "/add-input-fields",
+    },
   ];
 
   return (
