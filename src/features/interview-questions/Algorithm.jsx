@@ -1,3 +1,91 @@
+// // ______INT_TO_ROMAN_______________________________________
+
+// const intIntoRoman = (num) => {
+//     const romanMap = [
+//         { value: 1000, symbol: 'M' },
+//         { value: 900, symbol: 'CM'},
+//         { value: 500, symbol: 'D' },
+//         { value: 400, symbol: 'CD' },
+//         { value: 100, symbol: 'C' },
+//         { value: 90, symbol: 'XC' },
+//         { value: 50, symbol: 'L' },
+//         { value: 40, symbol: 'XL' },
+//         { value: 10, symbol: 'X' },
+//         { value: 9, symbol: 'IX' },
+//         { value: 5, symbol: 'V' },
+//         { value: 4, symbol: 'IV' },
+//         { value: 1, symbol: 'I' }
+//     ];
+    
+//     let roman = ''
+    
+//     for (let i = 0; i < romanMap.length; i++) {
+//         const { value, symbol } = romanMap[i]
+        
+//         while (num >= value) {
+//             roman += symbol
+//             num -= value
+//         }
+//     }
+    
+//     return roman
+// }
+
+// console.log(intIntoRoman(6))
+
+
+// // ______________FLATERN_THE_ARRAY__________________________
+
+// const array = [1, 3, 2, [5, 6, [6, 9, [45], 7], 2], 4, 6, 7, [6, [7, 8 ],7, 8], 8]
+
+// const flaternTheArray = (arr) => {
+//     let flatArray = []
+    
+//     arr.forEach((item, index) => {
+//         if (Array.isArray(item)) {
+//             flatArray = flatArray.concat(flaternTheArray(item))
+//         } else {
+//             flatArray.push(item)
+//         }
+//     })
+    
+//     return flatArray
+// }
+
+// console.log(flaternTheArray(array))
+
+// // ________________FIND THE MISSING NUMBER_______________
+// const array = [1, 2, 3, 5, 6]
+
+// // METHOD_1
+// const findTheMissingNumber = (arr) => {
+//     let n = arr.length + 1
+    
+//     // Total sum fo the lenth + 1
+//     const totalSum = n * (n + 1) / 2
+    
+//     // toalSum of the array actual lenth
+//     const arraySum = arr.reduce((acc, curr) => acc + curr, 0)
+    
+//     return n
+// }
+
+// // //  METHOD_2
+// // const findTheMissingNumber = arr => {
+// //     let n = arr.length + 1
+    
+// //     const numberSet = new Set(arr)
+    
+// //     for (let i = 1; i <= n; i++) {
+// //         if (!numberSet.has(i)) {
+// //             return i
+// //         }
+// //     }
+// // }
+
+
+// console.log(findTheMissingNumber(array))
+
 // //___________FIND THE BOTH STRINGS ARE ANAGRAMS___________
 
 // const string_1 = "listen";

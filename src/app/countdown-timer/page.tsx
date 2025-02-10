@@ -11,6 +11,7 @@ const Page = () => {
 
   console.log(timer);
   const [isTimerStart, setIsTimerStart] = useState(false);
+  const [pause, setPause] = useState(false);
   const [timerId, setTimerId] = useState<NodeJS.Timeout>();
 
   const timerHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -18,6 +19,16 @@ const Page = () => {
 
     if (/^\d*$/.test(value) && value.length <= 2) {
       setTimer((prevTimer) => ({ ...prevTimer, [name]: +value }));
+    }
+  };
+
+  const handlePauseAndResume = () => {
+    if (pause) {
+      setPause(false);
+      setIsTimerStart(true);
+    } else {
+      setPause(true);
+      setIsTimerStart(false);
     }
   };
 
@@ -121,7 +132,13 @@ const Page = () => {
       </div>
 
       {/* Start / Stop Button */}
-      <div className="mt-6">
+      <div className="mt-6 space-x-4">
+        <button
+          className={`px-6 py-3 rounded-lg text-white text-lg bg-blue-500 hover:bg-blue-600 font-semibold transition`}
+          onClick={() => handlePauseAndResume()}
+        >
+          {pause ? "Resume" : "Pause"}
+        </button>
         <button
           className={`px-6 py-3 rounded-lg text-white text-lg font-semibold transition ${
             isTimerStart

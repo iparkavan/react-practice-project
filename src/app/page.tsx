@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
@@ -18,6 +17,14 @@ export default function Home() {
     {
       name: "Add Input Fields",
       route: "/add-input-fields",
+    },
+    {
+      name: "SSR & Server Actions",
+      route: "/products",
+    },
+    {
+      name: "EMI Calculater",
+      route: "/emi-calculater",
     },
   ];
 
