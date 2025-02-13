@@ -1,3 +1,48 @@
+// //____________TO_SUM________________________________________
+
+// let nums = [2,7,11,15], target = 9
+
+// const toSum = (nums, target) => {
+//     // const hashMap = {}
+//     const hashMap = new Map()
+
+//     for (let i = 0; i < nums.length - 1; i++) {
+//         const comp = target - nums[i]
+
+//       if (hashMap.has(comp)) {
+//           return [hashMap.get(comp), i]
+//       }
+
+//       hashMap.set(nums[i], i)
+//     }
+// }
+
+// console.log(toSum(nums, target))
+
+// // // _________________MERGE_THE_BOTH_STRINGS_ALTERNATIVELY
+
+// const str_1 = 'suriya'
+// const str_2 = 'park'
+
+// const mergeAlternatively = (str_1, str_2) => {
+
+//     let mergedStr = ''
+
+//     let maxLength = Math.max(str_1.length, str_2.length)
+
+//     for (let i = 0; i < maxLength; i++) {
+
+//         if (i < str_1.length) mergedStr += str_1[i]
+
+//         if (i < str_2.length) mergedStr += str_2[i]
+//     }
+
+//     return mergedStr
+
+// }
+
+// console.log(mergeAlternatively(str_1, str_2))
+
 // // ______INT_TO_ROMAN_______________________________________
 
 // const intIntoRoman = (num) => {
@@ -16,23 +61,22 @@
 //         { value: 4, symbol: 'IV' },
 //         { value: 1, symbol: 'I' }
 //     ];
-    
+
 //     let roman = ''
-    
+
 //     for (let i = 0; i < romanMap.length; i++) {
 //         const { value, symbol } = romanMap[i]
-        
+
 //         while (num >= value) {
 //             roman += symbol
 //             num -= value
 //         }
 //     }
-    
+
 //     return roman
 // }
 
 // console.log(intIntoRoman(6))
-
 
 // // ______________FLATERN_THE_ARRAY__________________________
 
@@ -40,7 +84,7 @@
 
 // const flaternTheArray = (arr) => {
 //     let flatArray = []
-    
+
 //     arr.forEach((item, index) => {
 //         if (Array.isArray(item)) {
 //             flatArray = flatArray.concat(flaternTheArray(item))
@@ -48,7 +92,7 @@
 //             flatArray.push(item)
 //         }
 //     })
-    
+
 //     return flatArray
 // }
 
@@ -60,29 +104,28 @@
 // // METHOD_1
 // const findTheMissingNumber = (arr) => {
 //     let n = arr.length + 1
-    
+
 //     // Total sum fo the lenth + 1
 //     const totalSum = n * (n + 1) / 2
-    
+
 //     // toalSum of the array actual lenth
 //     const arraySum = arr.reduce((acc, curr) => acc + curr, 0)
-    
+
 //     return n
 // }
 
 // // //  METHOD_2
 // // const findTheMissingNumber = arr => {
 // //     let n = arr.length + 1
-    
+
 // //     const numberSet = new Set(arr)
-    
+
 // //     for (let i = 1; i <= n; i++) {
 // //         if (!numberSet.has(i)) {
 // //             return i
 // //         }
 // //     }
 // // }
-
 
 // console.log(findTheMissingNumber(array))
 
@@ -119,26 +162,26 @@
 //     }
 //   }
 
-  // // METHOD 2 USINg new Map()
-  // const frequency_1 = new Map()
-  // const frequency_2 = new Map()
+// // METHOD 2 USINg new Map()
+// const frequency_1 = new Map()
+// const frequency_2 = new Map()
 
-  // for (const char of str_1) {
-  //     frequency_1.set(char, (frequency_1.get(char) || 0) + 1)
-  // }
+// for (const char of str_1) {
+//     frequency_1.set(char, (frequency_1.get(char) || 0) + 1)
+// }
 
-  // for (const char of str_2) {
-  //     frequency_2.set(char, (frequency_2.get(char) || 0) + 1)
-  // }
+// for (const char of str_2) {
+//     frequency_2.set(char, (frequency_2.get(char) || 0) + 1)
+// }
 
-  // for (const char of frequency_1.keys()) {
-  //     if (frequency_1.get(char) !== frequency_2.get(char)) return false
-  // }
+// for (const char of frequency_1.keys()) {
+//     if (frequency_1.get(char) !== frequency_2.get(char)) return false
+// }
 
-  return true;
-};
+//   return true;
+// };
 
-console.log(areAnagrams(string_1, string_2));
+// console.log(areAnagrams(string_1, string_2));
 
 // _____________FIND THE FIRST NON_REPEATING CHARACTER_____
 // const string = 'swiss'

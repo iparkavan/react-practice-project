@@ -26,6 +26,10 @@ export default function Home() {
       name: "EMI Calculater",
       route: "/emi-calculater",
     },
+    {
+      name: "Search Filter",
+      route: "/search-filter",
+    },
   ];
 
   return (
