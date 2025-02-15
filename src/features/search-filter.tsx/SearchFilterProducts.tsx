@@ -1,7 +1,8 @@
 "use client";
 
 import { Products } from "@/app/search-filter/page";
-import { ChangeEvent, useState } from "react";
+import { useRouter } from "next/navigation";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 interface SearchFilterProductsProps {
   products: Products[];
@@ -10,21 +11,31 @@ interface SearchFilterProductsProps {
 const SearchFilterProducts: React.FC<SearchFilterProductsProps> = ({
   products,
 }) => {
-  const [searchQuery, setSearchQuery] = useState("");
+  //   const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredProducts = products.filter((product: Products, index) =>
-    product.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const router = useRouter();
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setSearchQuery(value);
+  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    // event.preventDefault();
+    // const {value} = event.target
+    // const query = form.search.value;
+    const { value } = event.target;
+    router.push(`?search=${value}`);
   };
+
+  //   const filteredProducts = products.filter((product: Products, index) =>
+  //     product.title.toLowerCase().includes(searchQuery.toLowerCase())
+  //   );
+
+  //   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  //     const { name, value } = e.target;
+  //     setSearchQuery(value);
+  //   };
 
   return (
     <div className="p-6">
-      <div className=" bg-red-600">
-        <label htmlFor="" className="flex items-center justify-center">
+      <div className="">
+        {/* <label htmlFor="" className="flex items-center justify-center">
           Search :
           <input
             className="primary-input m-4"
@@ -32,10 +43,22 @@ const SearchFilterProducts: React.FC<SearchFilterProductsProps> = ({
             name="search"
             onChange={handleChange}
           />
-        </label>
+        </label> */}
+        <div>
+          <label htmlFor="" className="flex items-center justify-center">
+            Search :
+            <input
+              className="primary-input m-4"
+              type="text"
+              name="search"
+              onChange={handleSearch}
+              placeholder="Search products..."
+            />
+          </label>
+        </div>
       </div>
       <div className="p-4 grid grid-cols-5 gap-4">
-        {filteredProducts.map((product: Products) => (
+        {products.map((product: Products) => (
           <div key={product.id} className="border p-4 rounded shadow">
             <img
               src={product.thumbnail}

@@ -1,6 +1,8 @@
 "use client";
 
+import Circle from "@/components/machine-coding/circle";
 import { useRouter } from "next/navigation";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
   const router = useRouter();
@@ -30,10 +32,18 @@ export default function Home() {
       name: "Search Filter",
       route: "/search-filter",
     },
+    {
+      name: "Mouse Move",
+      route: "/mouse-move",
+    },
+    {
+      name: "OTP Verification",
+      route: "/otp-verification",
+    },
   ];
 
   return (
-    <div className="flex items-center justify-center gap-4 min-h-screen">
+    <div className="flex flex-wrap items-center justify-center gap-4">
       {routes.map((route, index) => (
         <div key={index}>
           <button

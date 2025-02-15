@@ -43,8 +43,11 @@ export type Products = {
   thumbnail: string;
 };
 
-const Page = async () => {
-  const response = await fetch(`https://dummyjson.com/products`);
+const Page = async ({ searchParams }: { searchParams: string }) => {
+  const searchQuery = searchParams?.search || "";
+  const response = await fetch(
+    `https://dummyjson.com/products/search?q=${searchQuery}`
+  );
   const data = await response.json();
   const products: Products[] = data.products;
 
