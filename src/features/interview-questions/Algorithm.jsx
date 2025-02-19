@@ -1,3 +1,135 @@
+// ___________fIBONACCI_NUMBER__________
+
+// const fib = (n) => {
+// 	// let arr = [0, 1]
+
+// 	// for (let i = 2; i <= n; i++) {
+// 	// 	arr.push(arr[i - 1] + arr[i - 2])
+// 	// }
+
+// 	// return arr[n]
+
+// 	if (n <= 1) return n
+
+// 	return fib(n - 1) + fib(n - 2)
+// }
+
+// console.log(fib(6))
+
+// ______________FIND_THE_INTERSECTION_OF_TWO_ARRAY
+
+// const arr_1 = [1, 2, 2, 1]
+// const arr_2 = [2, 4, 2, 5]
+
+// const findTheIntersectionOfTwoString = (arr_1, arr_2) => {
+
+// 	const set_1 = new Set(arr_1)
+
+// 	const result = arr_2.filter((item, index) => set_1.has(item))
+// 	return [...new Set(result)]
+// }
+
+// console.log(findTheIntersectionOfTwoString(arr_1, arr_2))
+
+// //___________BEST_TIME_BUT_AND_SELL________________
+
+// const input = [2, 5, 6, 1, 8, 9, 4]
+
+// const maxProfit = (prices) => {
+
+//     let min = prices[0]
+//     let profit = 0
+
+//     for (let i = 1; i < prices.length; i++) {
+//         if (prices[i] < min) {
+//             min = prices[i]
+//         }
+
+//         profit = Math.max(profit, prices[i] - min)
+//     }
+
+//     return profit
+// }
+
+// console.log(maxProfit(input))
+
+//___________ROTATE_AN_ARRAY_BY_K____________________
+
+// METHOD_1
+
+// const nums = [1, 2, 3, 4, 5, 6]
+// const k = 2
+
+// const rotateAnArrayByK = (nums, k) => {
+
+//     const n = nums.length
+
+//     k = k % n
+
+//     const reverse = (start, end) => {
+//         while (start < end) {
+//             [nums[start], nums[end]] = [nums[end], nums[start]]
+//             start++
+//             end--
+//         }
+//     }
+
+//     reverse(0, n - 1)
+//     reverse(0, k - 1)
+//     reverse(k, n - 1)
+
+//     return nums
+
+// }
+
+// console.log(rotateAnArrayByK(nums, k))
+
+// METHOD_2
+
+// const array = [35, 35, 6, 2, 5, 2, 4, 7]
+
+// const rotateAnArray = (arr, k) => {
+//     const n = arr.length
+
+//     k = k % n
+
+//     // //METHOD_1
+
+//     return [...arr.slice(-k),...arr.slice(0, n - k)]
+
+//     // //METHOD_3
+//     // const rotated = arr.splice(n - k, n)
+//     // arr.unshift(...rotated)
+//     // return arr
+// }
+
+// console.log(rotateAnArray(array, 3))
+
+// // _____________Find_THE_LARGEST_NUMBER_IN_THE_ARRAY_________
+
+// const array = [10, 34, 34, 10, 22, 4,3]
+
+// const findTheSecondLargestNumber = (arr) => {
+//     // const unique = [...new Set(arr)].sort((a, b) => b - a)
+//     // return unique.length >= 2 ? unique[1] : -1
+
+//     let first = -Infinity  // 10 => 34
+//     let second = -Infinity // -1 => 22
+
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] > first) {
+//             second = first
+//             first = arr[i]
+//         } else if (arr[i] > second && arr[i] < first) {
+//             second = arr[i]
+//         }
+//     }
+
+//     return second
+// }
+
+// console.log(findTheSecondLargestNumber(array))
+
 // //____________TO_SUM________________________________________
 
 // let nums = [2,7,11,15], target = 9
