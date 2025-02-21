@@ -1,3 +1,136 @@
+// //_______________BINARY_SEARCH___________________
+
+// const a = '1010'
+// const b = '1101'
+
+// const binarySearch = (a, b) => {
+
+// 	let result = ''
+// 	let carry = 0
+// 	const maxLength = Math.max(a.length, b.length)
+
+// 	a = a.padStart(maxLength, '0')
+// 	b = b.padStart(maxLength, '0')
+
+// 	for (let i = maxLength - 1; i >= 0; i--) {
+
+// 		let sum = parseInt(a[i]) + parseInt(b[i]) + carry
+
+// 		carry = Math.floor(sum / 2)
+
+// 		result = (sum % 2) + result
+
+// 		if (carry) {
+// 			result = carry + result
+// 		}
+// 	}
+
+// 	return result
+// }
+
+// console.log(binarySearch(a, b))
+
+// //___________CUSTOM_DEEPCOPY_DEEPCLONE___FUNCTION___________
+
+// const deepCopy = (item) => {
+
+// 	if (item === null || typeof item !== 'object') {
+// 		return item
+// 	}
+
+// 	if (Array.isArray(item)) {
+
+// 		let arrayCopy = []
+
+// 		for (let i = 0; i < item.length; i++) {
+// 			arrayCopy[i] = deepCopy(item[i])
+// 		}
+
+// 		return arrayCopy
+// 	}
+
+// 	if (typeof item === 'object') {
+// 		let objCopy = {}
+
+// 		for (const key in item) {
+// 			if (item.hasOwnProperty(key)) {
+// 				objCopy[key] = deepCopy(item[key])
+// 			}
+// 		}
+
+// 		return objCopy
+// 	}
+
+// }
+
+// const obj = {
+// 	name: 'ParkAvan',
+// 	age: 27,
+// 	address: {
+// 		city: 'Perambalur',
+// 		pin: 621212
+// 	},
+// 	hobbies: ['Badminton', 'Reading', 'Acting'],
+// 	greet: () => {
+// 		console.log('Captain Miller')
+// 	}
+// }
+
+// const objCopy = deepCopy(obj)
+
+// // console.log(objCopy)
+
+// objCopy.address.city = 'Chennai'
+// obj.hobbies.push('Dancing')
+
+// console.log('obj =>', obj)
+// console.log('objCopy =>', objCopy)
+
+// //_________THROTTLE_FUNCTION___________
+
+// const useThrottle = (cb, delay) => {
+
+// 	let last = 0
+
+// 	return (...args) => {
+// 		let now = new Date().getTime()
+// 		if (now - last < delay) return
+// 		last = now
+// 		cb(...args)
+// 	}
+// }
+
+// const onResize = () => {
+// 	console.log('Window Resizing: ', new Date().toLocaleTimeString())
+// }
+
+// const throttle = useThrottle(onResize, 2000)
+
+// window.addEventListener('resize', throttle)
+
+// //______DEBOUNCE_FUNCITON______________
+
+// const useDebounce = (cb, delay) => {
+// 	let timeOutId;
+
+// 	return (...args) => {
+// 		if (timeOutId) clearTimeout(timeOutId)
+
+// 		timeOutId = setTimeout(() => {
+// 			cb(args)
+// 		}, delay)
+// 	}
+// }
+
+// const search = (result) => {
+// 	console.log("Searching For: ", result)
+// }
+
+// const debounce = useDebounce(search, 1000)
+
+// console.log(debounce('Captain'))
+// console.log(debounce('Captain Miller'))
+
 // ___________fIBONACCI_NUMBER__________
 
 // const fib = (n) => {
