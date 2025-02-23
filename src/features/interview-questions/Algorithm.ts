@@ -1,3 +1,35 @@
+// // FIND THE LEFT DIAGNOAL AND RIGHT DIAGNOAL
+
+// const numbers = [
+//     [1, 2, 3],
+//     [4, 5, 6],
+//     [7, 8, 9]
+//   ];
+
+//   // Initialize arrays for left and right diagonals
+//   let leftDiagonal = [];
+//   let rightDiagonal = [];
+
+//   // Get the size of the 2D array (assuming square matrix)
+//   const n = numbers.length;
+
+//   // Step 1 & 2: Extract left and right diagonal values
+//   for (let i = 0; i < n; i++) {
+//     leftDiagonal.push(numbers[i][i]);          // Left diagonal values
+//     rightDiagonal.push(numbers[i][n - 1 - i]); // Right diagonal values
+//   }
+
+//   // Step 3: Merge left and right diagonals into a single array
+//   const mergedDiagonals = [...leftDiagonal, ...rightDiagonal];
+
+//   // Step 4: Sum all values in the merged array
+//   const sum = mergedDiagonals.reduce((total, num) => total + num, 0);
+
+//   console.log("Left Diagonal:", leftDiagonal);
+//   console.log("Right Diagonal:", rightDiagonal);
+//   console.log("Merged Array:", mergedDiagonals);
+//   console.log("Sum of all diagonal values:", sum);
+
 // //_______________BINARY_SEARCH___________________
 
 // const a = '1010'
@@ -510,6 +542,25 @@
 // ________________REMOVE_DUPLICATES____________________
 
 // const array = [1, 2, 3, 4, 3, 2, 1, 5, 4]
+
+// const numbers = [1, 2, 3, 2, 4, 5, 1, 6, 7, 5, 8, 8, 9];
+
+// const removeDuplicates = (arr) => {
+
+//     let uniqueArr = []
+//     let seen ={}
+
+//     for (let i = 0; i < arr.length; i++) {
+//         if (!seen[arr[i]]) {
+//             uniqueArr.push(arr[i])
+//             seen[arr[i]] = true
+//         }
+//     }
+
+//     return uniqueArr
+// }
+
+// console.log(removeDuplicates(numbers))
 
 // const eliminateDuplicate = (arr) => {
 //     // return [...new Set(arr)] // FIRST METHOD
