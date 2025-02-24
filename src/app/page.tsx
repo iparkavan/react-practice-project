@@ -40,6 +40,18 @@ export default function Home() {
       name: "OTP Verification",
       route: "/otp-verification",
     },
+    {
+      name: "Front End Pagination",
+      route: "/front-end-pagination",
+    },
+    {
+      name: "Back End Pagination",
+      route: "/back-end-pagination",
+    },
+    {
+      name: "Password Generator",
+      route: "/password-generator",
+    },
   ];
 
   return (
