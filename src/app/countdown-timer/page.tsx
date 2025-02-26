@@ -57,33 +57,33 @@ const Page = () => {
   //   });
   // };
 
-  const countDownStart = (
-    sec: number,
-    min: number,
-    hours: number,
-    tid: NodeJS.Timeout
-  ) => {
-    if (sec > 0) {
-      setTimer((prevTimer) => ({ ...prevTimer, seconds: sec - 1 }));
-    } else if (min > 0) {
-      setTimer((prevTimer) => ({
-        ...prevTimer,
-        minutes: min - 1,
-        seconds: 59,
-      }));
-    } else if (hours > 0) {
-      setTimer((prevTimer) => ({
-        ...prevTimer,
-        hours: hours - 1,
-        minutes: 59,
-        seconds: 59,
-      }));
-    } else {
-      setTimer({ hours: 0, minutes: 0, seconds: 0 });
-      setIsTimerStart(false);
-      clearInterval(tid);
-    }
-  };
+  // const countDownStart = (
+  //   sec: number,
+  //   min: number,
+  //   hours: number,
+  //   tid: NodeJS.Timeout
+  // ) => {
+  //   if (sec > 0) {
+  //     setTimer((prevTimer) => ({ ...prevTimer, seconds: sec - 1 }));
+  //   } else if (min > 0) {
+  //     setTimer((prevTimer) => ({
+  //       ...prevTimer,
+  //       minutes: min - 1,
+  //       seconds: 59,
+  //     }));
+  //   } else if (hours > 0) {
+  //     setTimer((prevTimer) => ({
+  //       ...prevTimer,
+  //       hours: hours - 1,
+  //       minutes: 59,
+  //       seconds: 59,
+  //     }));
+  //   } else {
+  //     setTimer({ hours: 0, minutes: 0, seconds: 0 });
+  //     setIsTimerStart(false);
+  //     clearInterval(tid);
+  //   }
+  // };
 
   useEffect(() => {
     let tid: NodeJS.Timeout;
