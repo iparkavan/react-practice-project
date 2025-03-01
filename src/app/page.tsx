@@ -52,6 +52,14 @@ export default function Home() {
       name: "Password Generator",
       route: "/password-generator",
     },
+    {
+      name: "Progress Bar",
+      route: "/progress-bar",
+    },
+    {
+      name: "Multi Select Search",
+      route: "/multi-select-search",
+    },
   ];
 
   return (

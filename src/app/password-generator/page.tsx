@@ -44,7 +44,7 @@ const page = () => {
   const { title: passwordStrength, color } = getPasswordStrength(password);
 
   return (
-    <div className="w-[40%] bg-zinc-900 p-8 rounded-xl space-y-10">
+    <div className="w-[40%] bg-gray-100 border p-8 rounded-xl space-y-10">
       {password && (
         <div className="flex items-center justify-between w-full">
           <div>{password}</div>
