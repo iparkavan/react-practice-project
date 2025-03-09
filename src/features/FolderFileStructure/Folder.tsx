@@ -4,9 +4,11 @@ import React, { ChangeEvent, KeyboardEvent, useState } from "react";
 const Folder = ({
   explorer,
   handleInsertNode,
+  handleDeleteFolder,
 }: {
   handleInsertNode: (id: string, name: string, isFolder: boolean) => void;
   explorer: Explorer;
+  handleDeleteFolder: (id: string) => void;
 }) => {
   const [isExpand, setIsExpand] = useState(false);
   const [showInput, setShowInput] = useState({
@@ -40,6 +42,11 @@ const Folder = ({
     }
   };
 
+  const deleteHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    handleDeleteFolder(explorer.id);
+  };
+
   return (
     <>
       {explorer.isFolder ? (
@@ -64,6 +71,12 @@ const Folder = ({
                 onClick={(e) => handleNewFolder(e, false)}
               >
                 File +
+              </button>
+              <button
+                className="text-xs border p-1 rounded-lg bg-gray-100"
+                onClick={(e) => deleteHandler(e)}
+              >
+                Delete -
               </button>
             </div>
           </div>
@@ -94,14 +107,25 @@ const Folder = ({
                 key={item.id}
                 handleInsertNode={handleInsertNode}
                 explorer={item}
+                handleDeleteFolder={handleDeleteFolder}
               />
             ))}
           </div>
         </div>
       ) : (
-        <div className="m-2">
-          <span>📄</span>
-          <span> {explorer.name}</span>
+        <div className="my-2 flex items-center justify-between">
+          <div>
+            <span>📄</span>
+            <span> {explorer.name}</span>
+          </div>
+          <div>
+            <button
+              className="text-xs border p-1 rounded-lg bg-gray-100"
+              onClick={(e) => deleteHandler(e)}
+            >
+              Delete -
+            </button>
+          </div>
         </div>
       )}
     </>

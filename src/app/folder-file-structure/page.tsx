@@ -15,7 +15,7 @@ export interface Explorer {
 const FolderFileStructure = () => {
   const [explorerData, setExplorerData] = useState<Explorer>(explorer);
 
-  const { insertNode } = useTraverseTree();
+  const { insertNode, deleteNode } = useTraverseTree();
 
   const handleInsertNode = (
     folderId: string,
@@ -25,9 +25,17 @@ const FolderFileStructure = () => {
     setExplorerData((prev) => insertNode(prev, folderId, item, isFolder));
   };
 
+  const handleDeleteFolder = (itemId: string) => {
+    setExplorerData((prev) => deleteNode(prev, itemId) as Explorer);
+  };
+
   return (
     <div className="w-80">
-      <Folder handleInsertNode={handleInsertNode} explorer={explorerData} />
+      <Folder
+        handleInsertNode={handleInsertNode}
+        explorer={explorerData}
+        handleDeleteFolder={handleDeleteFolder}
+      />
     </div>
   );
 };
