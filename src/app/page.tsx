@@ -60,6 +60,14 @@ export default function Home() {
       name: "Multi Select Search",
       route: "/multi-select-search",
     },
+    {
+      name: "CRUD Operation",
+      route: "/crud-operation",
+    },
+    {
+      name: "Folder File Structure",
+      route: "/folder-file-structure",
+    },
   ];
 
   return (

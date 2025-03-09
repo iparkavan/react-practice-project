@@ -9,19 +9,20 @@ const App = () => {
   const [emi, setEmi] = useState(0);
 
   const emiCalculator = () => {
-    if (interestRate && loanAmount && loanTenure) {
+    if (loanAmount > 0 && loanTenure > 0) {
       let P = loanAmount;
-      let R = interestRate / 12 / 100;
-      let N = loanTenure;
+      let R = interestRate / 12 / 100; // Convert annual interest rate to monthly
+      let N = loanTenure * 12; // Convert years to months
 
       if (R === 0) {
-        setEmi(P / N);
+        setEmi(Math.round(P / N)); // Simple division for zero-interest case
         return;
       }
 
-      const emiValue =
-        (P * R * Math.pow(1 + R, N * 12)) / (Math.pow(1 + R, N * 12) - 1);
+      const emiValue = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
       setEmi(Math.round(emiValue));
+    } else {
+      setEmi(0); // Reset EMI if invalid values are entered
     }
   };
 
@@ -36,25 +37,25 @@ const App = () => {
           type="number"
           placeholder="Loan Amount"
           className="primary-input"
-          onChange={(e) => setLoanAmount(+e.target.value)}
+          onChange={(e) => setLoanAmount(Number(e.target.value) || 0)}
         />
 
         <input
           type="number"
           placeholder="Interest Rate"
           className="primary-input"
-          onChange={(e) => setInterestRate(+e.target.value)}
+          onChange={(e) => setInterestRate(Number(e.target.value) || 0)}
         />
 
         <input
           type="number"
-          placeholder="Loan Tenure"
+          placeholder="Loan Tenure (Years)"
           className="primary-input"
-          onChange={(e) => setLoanTenure(+e.target.value)}
+          onChange={(e) => setLoanTenure(Number(e.target.value) || 0)}
         />
       </div>
       <div>
-        <strong>You Interest rate is {emi > 0 ? emi : ""}</strong>
+        <strong>Your EMI is {emi > 0 ? emi : "0"}</strong>
       </div>
     </div>
   );

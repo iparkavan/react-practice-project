@@ -9,7 +9,6 @@ const Page = () => {
     seconds: 0,
   });
 
-  console.log(timer);
   const [isTimerStart, setIsTimerStart] = useState(false);
   const [pause, setPause] = useState(false);
   const [timerId, setTimerId] = useState<NodeJS.Timeout>();
@@ -32,30 +31,30 @@ const Page = () => {
     }
   };
 
-  // const countDownStart = (tid: NodeJS.Timeout) => {
-  //   setTimer((prevTimer) => {
-  //     let { hours, minutes, seconds } = prevTimer;
+  const countDownStart = (tid: NodeJS.Timeout) => {
+    setTimer((prevTimer) => {
+      let { hours, minutes, seconds } = prevTimer;
 
-  //     if (hours === 0 && minutes === 0 && seconds === 0) {
-  //       clearInterval(tid);
-  //       setIsTimerStart(false);
-  //       return prevTimer;
-  //     }
+      if (hours === 0 && minutes === 0 && seconds === 0) {
+        clearInterval(tid);
+        setIsTimerStart(false);
+        return prevTimer;
+      }
 
-  //     if (seconds > 0) {
-  //       seconds = seconds - 1;
-  //     } else if (minutes > 0) {
-  //       minutes--;
-  //       seconds = 59;
-  //     } else if (hours > 0) {
-  //       hours--;
-  //       minutes = 59;
-  //       seconds = 59;
-  //     }
+      if (seconds > 0) {
+        seconds = seconds - 1;
+      } else if (minutes > 0) {
+        minutes--;
+        seconds = 59;
+      } else if (hours > 0) {
+        hours--;
+        minutes = 59;
+        seconds = 59;
+      }
 
-  //     return { hours, minutes, seconds };
-  //   });
-  // };
+      return { hours, minutes, seconds };
+    });
+  };
 
   // const countDownStart = (
   //   sec: number,
@@ -90,7 +89,8 @@ const Page = () => {
 
     if (isTimerStart) {
       tid = setInterval(
-        () => countDownStart(timer.seconds, timer.minutes, timer.hours, tid),
+        // () => countDownStart(timer.seconds, timer.minutes, timer.hours, tid),
+        () => countDownStart(tid),
         1000
       );
       setTimerId(tid);

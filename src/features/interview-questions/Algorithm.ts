@@ -1,3 +1,60 @@
+// // __________Merge_Sorted_Arrays__________________
+
+// const mergeSortedArrays = (arr_1, arr_2) => {
+//     // return [...arr_1, ...arr_2].sort((a, b) => a - b)
+
+//     let i = 0, j = 0
+//     let sortedArray = []
+
+//     while (i < arr_1.length && j < arr_2.length) {
+//         if (arr_1[i] < arr_2[j]) {
+//             sortedArray.push(arr_1[i])
+//             i++
+//         } else {
+//              sortedArray.push(arr_2[j])
+//             j++
+//         }
+//     }
+
+//     while (i < arr_1.length) {
+//         sortedArray.push(arr_1[i])
+//         i++
+//     }
+
+//     while (j < arr_2.length) {
+//         sortedArray.push(arr_2[j])
+//         j++
+//     }
+
+//     return sortedArray
+
+// }
+
+// console.log(mergeSortedArrays([1, 3, 5], [2, 4, 6]));
+
+// // ____________________Insertion_sort___________________
+
+// const arr = [6, 2, 3, 5, 4, 1]
+
+// const insertionSort = (arr) => {
+
+//     for (let i = 1; i < arr.length; i++) {
+//         let noToInsert = arr[i]
+//         let j = i - 1
+
+//         while (j >= 0 && arr[j] > noToInsert) {
+//             arr[j + 1] = arr[j]
+//             j = j - 1
+//         }
+//         arr[j + 1] = noToInsert
+//     }
+
+//     return arr
+
+// }
+
+// console.log(insertionSort(arr))
+
 // // ____________Recursive_BinarySearch_____________
 
 // const arr = [-5, 2, 4, 6, 10], t = 10
@@ -287,7 +344,7 @@
 
 // console.log(findTheIntersectionOfTwoString(arr_1, arr_2))
 
-// //___________BEST_TIME_BUT_AND_SELL________________
+// //___________BEST_TIME_BUY_AND_SELL________________
 
 // const input = [2, 5, 6, 1, 8, 9, 4]
 
@@ -361,7 +418,7 @@
 
 // console.log(rotateAnArray(array, 3))
 
-// // _____________Find_THE_LARGEST_NUMBER_IN_THE_ARRAY_________
+// // _____________Find_THE_SECOND_LARGEST_NUMBER_IN_THE_ARRAY_________
 
 // const array = [10, 34, 34, 10, 22, 4,3]
 
@@ -394,7 +451,7 @@
 //     // const hashMap = {}
 //     const hashMap = new Map()
 
-//     for (let i = 0; i < nums.length - 1; i++) {
+//     for (let i = 0; i < nums.length; i++) {
 //         const comp = target - nums[i]
 
 //       if (hashMap.has(comp)) {
@@ -844,18 +901,20 @@
 // console.log(quickSort(array))
 
 // const bubbleSort = (arr) => {
+//     let swapped;
 //     for (let i = 0; i < arr.length - 1; i++) {
+//         swapped = false; // Track if any swap happens in this pass
 //         for (let j = 0; j < arr.length - 1 - i; j++) {
-//         //   let temp
-//           if (arr[j] > arr[j + 1]) {
-//               [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
-//             //   temp = arr[j]
-//             //   arr[j] = arr[j + 1]
-//             //   arr[j + 1] = temp
-//           }
+//             if (arr[j] > arr[j + 1]) {
+//                 [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]; // Swap elements
+//                 swapped = true;
+//             }
 //         }
+//         if (!swapped) break; // Stop if no swaps were made
 //     }
-//     return arr
-// }
+//     return arr;
+// };
 
-// console.log(bubbleSort(array))
+// const array = [5, 2, 9, 1, 5, 6];
+// console.log(bubbleSort(array));
+// // Output: [1, 2, 5, 5, 6, 9]

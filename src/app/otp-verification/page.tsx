@@ -69,7 +69,6 @@ const Page = () => {
 
     const missed = empty.filter((item, index) => item || item === 0);
     setMissed(missed.map(String));
-    console.log("Inputs", inputs);
   };
 
   //   0988
