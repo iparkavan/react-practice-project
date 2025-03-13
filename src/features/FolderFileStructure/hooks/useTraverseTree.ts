@@ -60,9 +60,24 @@ const useTraverseTree = () => {
     return updatedTree;
   };
 
-  console.log(memo);
+  const updateNode = (tree: Explorer, itemId: string, newName: string) => {
+    if (!tree) return null;
 
-  return { insertNode, deleteNode };
+    const updatedItems: Explorer[] = tree.items
+      .map((item) =>
+        item.id === itemId
+          ? { ...item, name: newName }
+          : memo.get(item.id) || updateNode(item, itemId, newName)
+      )
+      .filter((item): item is Explorer => item !== null);
+
+    const updatedTree = { ...tree, items: updatedItems };
+
+    memo.set(tree.id, updatedTree);
+    return updatedTree;
+  };
+
+  return { insertNode, deleteNode, updateNode };
 };
 
 export default useTraverseTree;

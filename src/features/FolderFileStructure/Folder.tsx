@@ -5,12 +5,16 @@ const Folder = ({
   explorer,
   handleInsertNode,
   handleDeleteFolder,
+  handleUpdateFolder,
 }: {
   handleInsertNode: (id: string, name: string, isFolder: boolean) => void;
   explorer: Explorer;
+  handleUpdateFolder: (id: string, name: string) => void;
   handleDeleteFolder: (id: string) => void;
 }) => {
   const [isExpand, setIsExpand] = useState(false);
+  const [newName, setNewName] = useState(explorer.name);
+  const [isEditing, setIsEditing] = useState(false);
   const [showInput, setShowInput] = useState({
     visble: false,
     isFolder: null as boolean | null,
@@ -47,6 +51,14 @@ const Folder = ({
     handleDeleteFolder(explorer.id);
   };
 
+  const onUpdateHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+    e.stopPropagation();
+    if (e.keyCode === 13 && newName) {
+      handleUpdateFolder(explorer.id, newName);
+      setIsEditing(false);
+    }
+  };
+
   return (
     <>
       {explorer.isFolder ? (
@@ -55,11 +67,24 @@ const Folder = ({
             className="cursor-pointer flex items-center justify-between"
             onClick={() => setIsExpand((prev) => !prev)}
           >
-            <div>
+            <div className="flex items-center">
               <span>{isExpand ? "📂" : "📁"}</span>
-              <span>{explorer.name}</span>
+              {isEditing ? (
+                <input
+                  type="text"
+                  value={newName}
+                  autoFocus
+                  onKeyDown={(e) => onUpdateHandler(e)}
+                  onBlur={() => setIsEditing(false)}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    setNewName(e.target.value)
+                  }
+                />
+              ) : (
+                <span>{explorer.name}</span>
+              )}
             </div>
-            <div className="space-x-3">
+            <div className="space-x-3 flex items-center justify-between">
               <button
                 className="text-xs border p-1 rounded-lg bg-gray-100"
                 onClick={(e) => handleNewFolder(e, true)}
@@ -71,6 +96,12 @@ const Folder = ({
                 onClick={(e) => handleNewFolder(e, false)}
               >
                 File +
+              </button>
+              <button
+                className="text-xs border p-1 rounded-lg bg-gray-100"
+                onClick={(e) => setIsEditing(true)}
+              >
+                Update
               </button>
               <button
                 className="text-xs border p-1 rounded-lg bg-gray-100"
@@ -108,17 +139,37 @@ const Folder = ({
                 handleInsertNode={handleInsertNode}
                 explorer={item}
                 handleDeleteFolder={handleDeleteFolder}
+                handleUpdateFolder={handleUpdateFolder}
               />
             ))}
           </div>
         </div>
       ) : (
         <div className="my-2 flex items-center justify-between">
-          <div>
+          <div className="flex items-center justify-between">
             <span>📄</span>
-            <span> {explorer.name}</span>
+            {isEditing ? (
+              <input
+                type="text"
+                value={newName}
+                autoFocus
+                onKeyDown={(e) => onUpdateHandler(e)}
+                onBlur={() => setIsEditing(false)}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  setNewName(e.target.value)
+                }
+              />
+            ) : (
+              <span> {explorer.name}</span>
+            )}
           </div>
-          <div>
+          <div className="flex items-center justify-between gap-3">
+            <button
+              className="text-xs border p-1 rounded-lg bg-gray-100"
+              onClick={(e) => setIsEditing(true)}
+            >
+              Update
+            </button>
             <button
               className="text-xs border p-1 rounded-lg bg-gray-100"
               onClick={(e) => deleteHandler(e)}
