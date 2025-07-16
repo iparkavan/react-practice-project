@@ -1,3 +1,12 @@
+// // ___________first character of the string should be in uppercase________
+
+// const capatilize = (str) => {
+
+//     return str.split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+// }
+
+// console.log(capatilize('i am global'))
+
 // // __________Merge_Sorted_Arrays__________________
 
 // const mergeSortedArrays = (arr_1, arr_2) => {

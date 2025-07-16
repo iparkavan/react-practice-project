@@ -68,6 +68,14 @@ export default function Home() {
       name: "Folder File Structure",
       route: "/folder-file-structure",
     },
+    {
+      name: "Stepper Component",
+      route: "/stepper-component",
+    },
+    {
+      name: "Auto Complete Suggestion",
+      route: "/auto-complete-suggestion",
+    },
   ];
 
   return (
