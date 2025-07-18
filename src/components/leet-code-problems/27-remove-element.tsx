@@ -1,3 +1,6 @@
+let array = [3, 2, 2, 3];
+let value = 3;
+
 function removeElement(nums: number[], val: number): number {
   let k = 0;
 
@@ -10,3 +13,5 @@ function removeElement(nums: number[], val: number): number {
 
   return k;
 }
+
+console.log(removeElement(array, value));
