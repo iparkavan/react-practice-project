@@ -452,11 +452,11 @@
 
 // console.log(findTheSecondLargestNumber(array))
 
-// //____________TO_SUM________________________________________
+// //____________TWO_SUM________________________________________
 
 // let nums = [2,7,11,15], target = 9
 
-// const toSum = (nums, target) => {
+// const twoSum = (nums, target) => {
 //     // const hashMap = {}
 //     const hashMap = new Map()
 
@@ -471,7 +471,7 @@
 //     }
 // }
 
-// console.log(toSum(nums, target))
+// console.log(twoSum(nums, target))
 
 // // // _________________MERGE_THE_BOTH_STRINGS_ALTERNATIVELY
 

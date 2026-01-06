@@ -10,7 +10,7 @@ interface CustomFormFieldsProps {
   formData: Record<string, string | number | boolean | File | string[] | null>;
   handleChange: (
     name: keyof FormData,
-    value: string | number | boolean | File | null
+    value: string | number | boolean | File | string[] | null
   ) => void;
   handleDeleteFile?: (name: string) => void;
   errors: FormErrors;

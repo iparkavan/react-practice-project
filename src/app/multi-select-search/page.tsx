@@ -81,7 +81,9 @@ const page = () => {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedData, setSelectedData] = useState<User[]>([]);
-  const [selectedDataSet, setSelectedDataSet] = useState(new Set());
+  const [selectedDataSet, setSelectedDataSet] = useState<Set<number>>(
+    new Set()
+  );
 
   const fetchUsers = async () => {
     if (query.trim() === "") {
@@ -110,7 +112,7 @@ const page = () => {
     // setSelectedDataSet(new Set([...selectedDataSet, user.id]));
     setSelectedDataSet((prevSet) => new Set(prevSet).add(user.id));
     setQuery("");
-    setSuggestions([]);
+    // setSuggestions([]);
     inputRef.current?.focus();
   };
 
@@ -133,7 +135,7 @@ const page = () => {
     ) {
       const lastUser = selectedData[selectedData.length - 1];
       handleRemovePill(lastUser);
-      setSuggestions([]);
+      // setSuggestions([]);
     }
   };
 
