@@ -1,4 +1,4 @@
-// // (1) findTheSubArray
+// ---------------------- [1] findTheSubArray ----------------------
 
 let numsArray = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 
@@ -16,7 +16,7 @@ const findTheSubArray = (nums) => {
 
 console.log(findTheSubArray(numsArray));
 
-// // (2) FizzBuzz
+// ---------------------- [2] FizzBuzz ----------------------
 
 const fizzBuzz = (n) => {
   for (let i = 1; i <= n; i++) {
@@ -35,7 +35,7 @@ const fizzBuzz = (n) => {
 
 fizzBuzz(15);
 
-// (3) ROTATE AN ARRAY K TIMES
+// ------------------------- [3] ROTATE AN ARRAY K TIMES -------------------------
 
 const nums = [1, 2, 3, 4, 5];
 const k = 2;
@@ -67,7 +67,7 @@ const rotateAnArray = (nums, k) => {
 
 console.log(rotateAnArray(nums, k));
 
-// (4) FIRST NON REPEATING CHARACTER IN A STRING
+// ----------------- [4] FIRST NON REPEATING CHARACTER IN A STRING -----------------
 
 let str = "Leetcode";
 
@@ -88,3 +88,84 @@ const findTheFirstNonRepeatingChar = (str) => {
 };
 
 console.log(findTheFirstNonRepeatingChar(str));
+
+// --------------------- [5] MERGE SORTED ARRAY ---------------------
+
+let nums1 = [1, 2, 3, 0, 0, 0],
+  m = 3;
+let nums2 = [2, 5, 6],
+  n = 3;
+
+const mergeSortedArray = (nums1, nums2, m, n) => {
+  let p1 = m - 1;
+  let p2 = n - 1;
+  let p = m + n - 1;
+
+  while (p2 >= 0) {
+    if (p1 >= 0 && nums1[p1] > nums2[p2]) {
+      nums1[p] = nums1[p1];
+      p1--;
+    } else {
+      nums1[p] = nums2[p2];
+      p2--;
+    }
+    p--;
+  }
+  return nums1;
+};
+
+console.log(mergeSortedArray(nums1, nums2, m, n));
+
+// ------------------- [6] Find all pairs with a given sum — Easy ----------------------
+
+let arr = [1, 5, 7, -1, 5, 2, 4];
+let sum = 6;
+
+const findPairs = (arr, target) => {
+  const seen = new Set();
+  const pairs = new Set();
+  const result = [];
+
+  for (let num of arr) {
+    const comp = target - num;
+
+    if (seen.has(comp)) {
+      const pair = [num, comp].sort((a, b) => b - a);
+      const key = pair.join(",");
+
+      if (!pairs.has(key)) {
+        pairs.add(key);
+        result.push(key);
+      }
+    }
+
+    seen.add(num);
+  }
+
+  return result;
+};
+
+console.log(findPairs(arr, sum));
+
+// • [7] Longest substring without repeating characters — Medium
+
+let str = "abcabcbb";
+
+const lengthOfLongestSubString = (str) => {
+  let map = new Map();
+  let left = 0;
+  let maxLength = 0;
+
+  for (let right = 0; right < str.length; right++) {
+    if (map.has(str[right])) {
+      left = Math.max(left, map.get(str[right]) + 1);
+    }
+
+    map.set(str[right], right);
+    maxLength = Math.max(maxLength, right - left + 1);
+  }
+
+  return maxLength;
+};
+
+console.log(lengthOfLongestSubString(str));
