@@ -149,7 +149,7 @@ console.log(findPairs(arr, sum));
 
 // • [7] Longest substring without repeating characters — Medium
 
-let str = "abcabcbb";
+let string = "abcabcbb";
 
 const lengthOfLongestSubString = (str) => {
   let map = new Map();
@@ -168,4 +168,26 @@ const lengthOfLongestSubString = (str) => {
   return maxLength;
 };
 
-console.log(lengthOfLongestSubString(str));
+console.log(lengthOfLongestSubString(string));
+
+// • [8] Move all zeros to the end of the array — Easy
+
+let number = [0, 1, 3, 0, 12];
+
+const moveZerosTowardsLeft = (nums) => {
+  let pos = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] !== 0) {
+      // const temp = nums[i]
+      // nums[i] = nums[pos]
+      // nums[pos] = temp
+      // pos++
+      [nums[i], nums[pos]] = [nums[pos], nums[i]];
+      pos++;
+    }
+  }
+  return nums;
+};
+
+console.log(moveZerosTowardsLeft(number));
