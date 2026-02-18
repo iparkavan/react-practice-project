@@ -111,6 +111,7 @@ const mergeSortedArray = (nums1, nums2, m, n) => {
     }
     p--;
   }
+
   return nums1;
 };
 
@@ -191,3 +192,57 @@ const moveZerosTowardsLeft = (nums) => {
 };
 
 console.log(moveZerosTowardsLeft(number));
+
+// • [9] Merge two sorted arrays without extra space — Medium
+
+let arr1 = [1, 4, 8, 10];
+let arr2 = [2, 3, 9];
+
+const mergeWithoutExtraSpace = (arr1, arr2) => {
+  let n = arr1.length;
+  let m = arr2.length;
+
+  const nextGap = (gap) => {
+    if (gap <= 1) return 0;
+    return Math.ceil(gap / 2);
+  };
+
+  let gap = nextGap(n + m);
+
+  while (gap > 0) {
+    let i = 0;
+    let j = gap;
+
+    while (j < n + m) {
+      // Case 1: both pointers in arr1
+      if (i < n && j < n) {
+        if (arr1[i] > arr1[j]) {
+          [arr1[i], arr1[j]] = [arr1[j], arr1[i]];
+        }
+      }
+
+      // Case 2: i in arr1, j in arr2
+      else if (i < n && j >= n) {
+        if (arr1[i] > arr2[j - n]) {
+          [arr1[i], arr2[j - n]] = [arr2[j - n], arr1[i]];
+        }
+      }
+
+      // Case 3: both in arr2
+      else {
+        if (arr2[i - n] > arr2[j - n]) {
+          [arr2[i - n], arr2[j - n]] = [arr2[j - n], arr2[i - n]];
+        }
+      }
+
+      i++;
+      j++;
+    }
+
+    gap = nextGap(gap);
+  }
+};
+
+mergeWithoutExtraSpace(arr1, arr2);
+
+console.log(arr1, arr2);

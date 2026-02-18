@@ -101,7 +101,7 @@ const binarySearch = (arr, t) => {
 
     // binary search works only on sorted array
     // if it is not in an order
-    const sorted = arr.sort((a, b) => a - b)
+    // const sorted = arr.sort((a, b) => a - b)
 
     let leftIndex = 0
     let rightIndex = arr.length - 1
@@ -187,7 +187,7 @@ const numbers = [
   console.log("Merged Array:", mergedDiagonals);
   console.log("Sum of all diagonal values:", sum);
 
-//_______________BINARY_SEARCH___________________
+//_______________BINARY_ADDITION_ALGORITHM___________________
 
 const a = '1010'
 const b = '1101'
@@ -211,7 +211,7 @@ const binarySearch = (a, b) => {
 
 		if (carry) {
 			result = carry + result
-		}
+		}               
 	}
 
 	return result
@@ -927,3 +927,66 @@ const bubbleSort = (arr) => {
 const array = [5, 2, 9, 1, 5, 6];
 console.log(bubbleSort(array));
 // Output: [1, 2, 5, 5, 6, 9]
+
+
+// ____________________SHELL_SORT________________________
+
+function shellSort(arr) {
+    let n = arr.length;
+
+    // Start with a big gap, then reduce the gap
+    for (let gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {
+
+        // Perform gapped insertion sort
+        for (let i = gap; i < n; i++) {
+
+            let temp = arr[i];
+            let j;
+
+            // Shift earlier gap-sorted elements up until correct location found
+            for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
+                arr[j] = arr[j - gap];
+            }
+
+            // Put temp in its correct location
+            arr[j] = temp;
+        }
+    }
+
+    return arr;
+}
+
+// Example
+let arr = [12, 34, 54, 2, 3];
+console.log(shellSort(arr));
+
+// ____________________SHELL_SORT_while_loop________________________
+
+let arr = [12, 34, 54, 2, 3]
+        // 
+
+const shellSort = (arr) => {
+    
+    let n = arr.length
+    
+    for (let gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {
+        
+        for (let i = gap; i < n; i++) {
+            
+            const temp = arr[i]
+            let j = i
+    
+            while (j >= gap && arr[j - gap] > temp) {
+                arr[j] = arr[j - gap];
+                j = j - gap;
+            }
+
+            arr[j] = temp
+        }
+    }
+    
+    return arr
+    
+}
+
+console.log(shellSort(arr))
