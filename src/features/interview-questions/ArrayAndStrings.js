@@ -341,3 +341,41 @@ const maxWater = (height) => {
 };
 
 console.log(maxWater(height));
+
+// • [12] Trapping Rain Water
+
+let height = [4, 2, 0, 3, 2, 5];
+
+const trappingWater = (height) => {
+  let left = 0;
+  let right = height.length - 1;
+
+  let maxLeft = 0;
+  let maxRight = 0;
+
+  let water = 0;
+
+  while (left < right) {
+    if (height[left] < height[right]) {
+      if (height[left] >= maxLeft) {
+        maxLeft = height[left];
+      } else {
+        water = water + maxLeft - height[left];
+      }
+
+      left++;
+    } else {
+      if (height[right] >= maxRight) {
+        maxRight = height[right];
+      } else {
+        water = water + maxRight - height[right];
+      }
+
+      right++;
+    }
+  }
+
+  return water;
+};
+
+console.log(trappingWater(height));

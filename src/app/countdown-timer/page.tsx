@@ -91,7 +91,7 @@ const Page = () => {
       tid = setInterval(
         // () => countDownStart(timer.seconds, timer.minutes, timer.hours, tid),
         () => countDownStart(tid),
-        1000
+        1000,
       );
       setTimerId(tid);
     } else if (timerId) {
