@@ -379,3 +379,52 @@ const trappingWater = (height) => {
 };
 
 console.log(trappingWater(height));
+
+// • [13] Group Anagrams
+
+let str = ["eat", "tea", "tan", "ate", "nat", "bat"];
+
+const groupAnagrams = (str) => {
+  const map = new Map();
+
+  for (let char of str) {
+    const key = char.split("").sort().join("");
+
+    if (!map.has(key)) {
+      map.set(key, []);
+    }
+
+    map.get(key).push(char);
+  }
+
+  return Array.from(map.values());
+};
+
+console.log(groupAnagrams(str));
+
+// • [14] • Subarray Sum Equals K
+
+let nums = [1, 2, 1, 2, 1],
+  k = 3;
+
+function subarraySum(nums, k) {
+  let count = 0;
+  let sum = 0;
+
+  const map = new Map();
+  map.set(0, 1);
+
+  for (let num of nums) {
+    sum += num;
+
+    if (map.has(sum - k)) {
+      count += map.get(sum - k);
+    }
+
+    map.set(sum, (map.get(sum) || 0) + 1);
+  }
+
+  return count;
+}
+
+console.log(subarraySum(nums, k));
