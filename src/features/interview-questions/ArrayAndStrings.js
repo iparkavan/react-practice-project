@@ -153,16 +153,32 @@ console.log(findPairs(arr, sum));
 let string = "abcabcbb";
 
 const lengthOfLongestSubString = (str) => {
-  let map = new Map();
-  let left = 0;
-  let maxLength = 0;
+  // let map = new Map();
+  // let left = 0;
+  // let maxLength = 0;
 
-  for (let right = 0; right < str.length; right++) {
-    if (map.has(str[right])) {
-      left = Math.max(left, map.get(str[right]) + 1);
+  // for (let right = 0; right < str.length; right++) {
+  //   if (map.has(str[right])) {
+  //     left = Math.max(left, map.get(str[right]) + 1);
+  //   }
+
+  //   map.set(str[right], right);
+  //   maxLength = Math.max(maxLength, right - left + 1);
+  // }
+
+  // return maxLength;
+
+  const set = new Set();
+  let maxLength = 0;
+  let left = 0;
+
+  for (let right = 0; right < s.length; right++) {
+    while (set.has(s[right])) {
+      set.delete(s[left]);
+      left++;
     }
 
-    map.set(str[right], right);
+    set.add(s[right]);
     maxLength = Math.max(maxLength, right - left + 1);
   }
 
@@ -428,3 +444,70 @@ function subarraySum(nums, k) {
 }
 
 console.log(subarraySum(nums, k));
+
+// • [15] • Maximum Sum Subarray of Size K
+
+let nums = [10, 2, 3, 1];
+let k = 2;
+
+const MaxSubArraySizeK = (nums, k) => {
+  let minWindow = 0;
+
+  for (let i = 0; i < k; i++) {
+    minWindow += nums[i];
+  }
+
+  let maxSum = minWindow;
+
+  for (let i = k; i < nums.length; i++) {
+    minWindow += nums[i] - nums[i - k];
+    maxSum = Math.max(maxSum, minWindow);
+  }
+
+  return maxSum;
+};
+
+console.log(MaxSubArraySizeK(nums, k));
+
+// • [16] • Product of Array Except Self
+
+let nums = [1, 2, 3, 4];
+
+const productExceptItself = (nums) => {
+  let result = new Array(nums.length).fill(1);
+
+  let prefix = 1;
+
+  for (let i = 0; i < nums.length; i++) {
+    result[i] = prefix;
+    prefix *= nums[i];
+  }
+
+  let suffix = 1;
+
+  for (let i = nums.length - 1; i >= 0; i--) {
+    result[i] *= suffix;
+    suffix *= nums[i];
+  }
+
+  return result;
+
+  // let result = []
+
+  // for (let i = 0; i < nums.length; i++) {
+
+  //     let count = 1
+
+  //     for (let j = 0; j < nums.length; j++) {
+
+  //         if (nums[j] !== nums[i]) {
+  //             count *= nums[j]
+  //         }
+  //     }
+  //     result.push(count)
+  // }
+
+  // return result
+};
+
+console.log(productExceptItself(nums));

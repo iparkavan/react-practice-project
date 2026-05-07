@@ -1,11 +1,14 @@
 "use client";
 
-import Circle from "@/components/machine-coding/circle";
+import Child from "@/components/child";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 export default function Home() {
   const router = useRouter();
+
+  // const [count, setCount] = useState(0);
+  // const [value, setValue] = useState(0);
 
   const routes = [
     {
@@ -78,8 +81,39 @@ export default function Home() {
     },
   ];
 
+  // const handleClick = useCallback(() => {
+  //   setValue((prev) => prev - 1);
+  // }, []);
+
+  // const expensiveCalculation = (num: number) => {
+  //   console.log("Expensive calculation performed");
+  //   for (let i = 0; i < 1e8; i++) {
+  //     return num * 2;
+  //   }
+  // };
+
+  // const result = useEffect(() => {
+  //   expensiveCalculation(count);
+  // }, [count]);
+
   return (
     <div className="flex flex-wrap items-center justify-center gap-4">
+      {/* <div>
+        <button
+          className="primary-btn"
+          onClick={() => setValue((prev) => prev + 1)}
+        >
+          value change
+        </button>
+        <Child value={value} onClick={handleClick} />
+        <button
+          className="primary-btn"
+          onClick={() => setCount((prev) => prev + 1)}
+        >
+          Increment
+        </button>
+        <p>Count: {result}</p>
+      </div> */}
       {routes.map((route, index) => (
         <div key={index}>
           <button

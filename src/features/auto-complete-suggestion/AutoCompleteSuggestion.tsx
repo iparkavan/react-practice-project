@@ -47,7 +47,7 @@ const AutoCompleteSuggestion: React.FC<AutoCompleteSuggestionProps> = ({
       let result: any[] = [];
       if (staticData) {
         result = staticData.filter((item) =>
-          item.toLowerCase().includes(query.toLowerCase())
+          item.toLowerCase().includes(query.toLowerCase()),
         );
       } else if (fetchSuggestions) {
         result = await fetchSuggestions(query);
