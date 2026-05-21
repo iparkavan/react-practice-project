@@ -396,6 +396,37 @@ const trappingWater = (height) => {
 
 console.log(trappingWater(height));
 
+// Trapping rain water using prefix and suffix
+
+function trap(height) {
+  const n = height.length;
+
+  const leftMax = Array(n).fill(0);
+  const rightMax = Array(n).fill(0);
+
+  // Build prefix max
+  leftMax[0] = height[0];
+
+  for (let i = 1; i < n; i++) {
+    leftMax[i] = Math.max(leftMax[i - 1], height[i]);
+  }
+
+  // Build suffix max
+  rightMax[n - 1] = height[n - 1];
+
+  for (let i = n - 2; i >= 0; i--) {
+    rightMax[i] = Math.max(rightMax[i + 1], height[i]);
+  }
+
+  let water = 0;
+
+  for (let i = 0; i < n; i++) {
+    water += Math.min(leftMax[i], rightMax[i]) - height[i];
+  }
+
+  return water;
+}
+
 // • [13] Group Anagrams
 
 let str = ["eat", "tea", "tan", "ate", "nat", "bat"];
@@ -511,3 +542,61 @@ const productExceptItself = (nums) => {
 };
 
 console.log(productExceptItself(nums));
+
+// • [17] • Decode String
+
+let s = "3[a2[c]]";
+
+const decodeString = (s) => {
+  let stack = [];
+  let num = 0;
+  let str = "";
+
+  for (let char of s) {
+    if (!isNaN(char)) {
+      num = num * 10 + Number(char);
+    } else if (char === "[") {
+      stack.push([str, num]);
+
+      str = "";
+      num = 0;
+    } else if (char === "]") {
+      let [prevStr, count] = stack.pop();
+
+      str = prevStr + str.repeat(count);
+    } else {
+      str += char;
+    }
+  }
+
+  return str;
+};
+
+console.log(decodeString(s));
+
+// • [18] • Reverse Vowels
+
+let str = "leetcoidc";
+
+const reverseVowels = (string) => {
+  const str = string.split("");
+
+  let left = 0;
+  let right = str.length - 1;
+
+  let set = new Set(["aeiouAEIOU"]);
+
+  while (left < right) {
+    while (left < right && !set.has(str[left])) left++;
+    while (left < right && !set.has(str[right])) right++;
+
+    [str[left], str[right]] = [str[right], str[left]];
+
+    left++;
+    right--;
+  }
+
+  return str.join("");
+};
+
+console.log(reverseVowels(str));

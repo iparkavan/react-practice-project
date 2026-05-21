@@ -28,6 +28,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex items-center justify-center min-h-screen gap-4`}
       >
         {children}
+        <div id="modal-root"></div>
       </body>
     </html>
   );

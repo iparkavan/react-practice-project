@@ -28,7 +28,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/features/interview-questions/ArrayAndStrings.js",
-    "src/features/interview-questions/Algorithm.js"
+    "src/features/interview-questions/Algorithm.js",
+    "src/components/UI/model.jsx",
+    "src/app/custom-modal/page.jsx"
   ],
   "exclude": ["node_modules"]
 }

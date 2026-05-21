@@ -79,6 +79,18 @@ export default function Home() {
       name: "Auto Complete Suggestion",
       route: "/auto-complete-suggestion",
     },
+    {
+      name: "Infinite Scroll",
+      route: "/infinite-scroll",
+    },
+    {
+      name: "Nested Array of Objects",
+      route: "/array-of-objects",
+    },
+    {
+      name: "Custom Modal",
+      route: "/custom-modal",
+    },
   ];
 
   // const handleClick = useCallback(() => {
