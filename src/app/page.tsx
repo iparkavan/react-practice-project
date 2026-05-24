@@ -91,6 +91,10 @@ export default function Home() {
       name: "Custom Modal",
       route: "/custom-modal",
     },
+    {
+      name: "All Form Fields",
+      route: "/form-fields",
+    },
   ];
 
   // const handleClick = useCallback(() => {
